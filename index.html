@@ -751,9 +751,9 @@
               </button>
               <figcaption><span>View image</span></figcaption>
             </figure>
-            <figure class="visual" id="draco-hot-fire" style="display: none">
+            <figure class="visual" id="draco-hot-fire">
               <button type="button" class="image-button" aria-label="Enlarge Draco hot-fire photo">
-                <img src="assets/1Y8A4124.png" alt="A rocket engine firing horizontally on the rebuilt Draco stand beside the ERPL canopy">
+                <img src="assets/draco-hot-fire.webp" loading="lazy" alt="A rocket engine firing horizontally on the rebuilt Draco stand beside the ERPL canopy">
               </button>
               <figcaption><span>View image</span></figcaption>
             </figure>
@@ -962,13 +962,6 @@
       <img alt="">
     </dialog>
     <script>
-      const dracoPhoto = document.querySelector('#draco-hot-fire img');
-      function showDracoPhoto() {
-        dracoPhoto.closest('figure').style.removeProperty('display');
-      }
-      if (dracoPhoto.naturalWidth) showDracoPhoto();
-      else dracoPhoto.addEventListener('load', showDracoPhoto, { once: true });
-
       // Open the selected project image.
       const dialog = document.querySelector('dialog');
 
