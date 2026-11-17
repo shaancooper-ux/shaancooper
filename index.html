@@ -706,9 +706,9 @@
           </div>
           <div>
             <p>
-              I’m an aerospace engineering student in Daytona Beach. At the Experimental Rocket
-              Propulsion Lab, I’ve helped rebuild a test stand and written Python tools to understand
-              what happens during a firing.
+              I study aerospace engineering at Embry-Riddle in Daytona Beach. At the Experimental Rocket
+              Propulsion Lab, I helped lead the rebuild of our Draco test stand and wrote Python tools
+              to predict chamber pressure and compare it with hot-fire measurements.
             </p>
             <p>
               I’m looking for an internship where I can contribute to a team and learn more about fluids,
@@ -746,15 +746,15 @@
         <!-- Draco: test stand rebuild -->
         <article class="project">
           <div class="project-gallery">
-            <figure class="visual">
-              <button class="image-button" aria-label="Enlarge rebuilt test stand CAD image">
-                <img src="assets/rebuild.webp" alt="CAD assembly of the rebuilt test stand with propellant tanks, pressurant bottles, and engine mount" loading="lazy">
-              </button>
-              <figcaption><span>View image</span></figcaption>
-            </figure>
             <figure class="visual" id="draco-hot-fire">
               <button type="button" class="image-button" aria-label="Enlarge Draco hot-fire photo">
                 <img src="assets/draco-hot-fire.webp" loading="lazy" alt="A rocket engine firing horizontally on the rebuilt Draco stand beside the ERPL canopy">
+              </button>
+              <figcaption><span>View image</span></figcaption>
+            </figure>
+            <figure class="visual">
+              <button class="image-button" aria-label="Enlarge rebuilt test stand CAD image">
+                <img src="assets/rebuild.webp" alt="CAD assembly of the rebuilt test stand with propellant tanks, pressurant bottles, and engine mount" loading="lazy">
               </button>
               <figcaption><span>View image</span></figcaption>
             </figure>
@@ -762,6 +762,9 @@
           <div class="project-copy">
             <div class="eyebrow">Feb–Apr 2026 · Team hot-fire in October</div>
             <h3>Draco: test stand rebuild</h3>
+            <div class="result">
+              Our rebuild cut setup time from about five hours to three. On October 16, 2026, our team fired an engine rated at 2,000 lbf on the rebuilt stand.
+            </div>
             <p>
               I helped lead the rebuild of our damaged test stand. My main responsibilities
               included laying out the fluid lines, modeling the tank enclosure in CAD, and calculating pressure losses for the
@@ -772,9 +775,56 @@
               tanks inside the frame to simplify setup. I helped assemble the plumbing and frame, cut and
               drill thrust-structure beams, and set up the stand for testing.
             </p>
-            <div class="result">
-              Setup time fell from about five hours to three. On October 16, 2026, our team fired an engine rated at 2,000 lbf on the rebuilt stand.
-            </div>
+          </div>
+        </article>
+
+        <!-- Hot-fire data analysis -->
+        <article class="project">
+          <div class="project-gallery">
+            <figure class="visual">
+              <button type="button" class="image-button" aria-label="Enlarge measured thrust and chamber pressure plot">
+                <img src="assets/hot-fire-thrust-pressure.png" alt="Measured thrust and chamber pressure versus elapsed time during a hot-fire test" loading="lazy">
+              </button>
+              <figcaption><span>View image</span></figcaption>
+            </figure>
+            <figure class="visual">
+              <button class="image-button" aria-label="Enlarge hot-fire data plots">
+                <img src="assets/analysis.webp" alt="Python plots of measured hot-fire pressure data" loading="lazy">
+              </button>
+              <figcaption><span>View image</span></figcaption>
+            </figure>
+          </div>
+          <div class="project-copy">
+            <div class="eyebrow">Aug 2025–present · Python</div>
+            <h3>Hot-fire data analysis</h3>
+            <p>
+              I wrote a Python script to isolate the active burn using thrust thresholds. I then compared
+              measured thrust and chamber pressure with predictions. With the calculated propellant-line
+              settings, chamber pressure came close to the target, and thrust was slightly lower than predicted.
+            </p>
+            <p>
+              In the run shown, measured thrust reached about 1,900 lbf around 151 s and fell to about 1,600 lbf by the end of the plotted interval. The tank-pressure trends were consistent with one
+              tank having more gas space above the liquid as the propellants drained.
+            </p>
+            <details class="method">
+              <summary>How the set-pressure calculator works</summary>
+              <p>
+                For each propellant line, I subtract the Venturi throat pressure from its inlet pressure to
+                get ΔP. I convert that difference from psi to pascals and then calculate the mass flow rate:
+              </p>
+              <p>ṁ = (C<sub>d</sub>A)<sub>Venturi</sub> √(2ρ ΔP)</p>
+              <p>The Venturi’s effective flow area, (C<sub>d</sub>A)<sub>Venturi</sub>, comes from calibration in earlier tests. With area in m² and the density of the fluid flowing through the Venturi in kg/m³ (water for a water run), the result is the mass flow rate in kg/s.</p>
+              <p>
+                The calculator then uses that flow and the effective flow area of the propellant line to
+                estimate the pressure loss upstream of the chamber. Adding that loss to the target chamber
+                pressure gives the line’s set pressure:
+              </p>
+              <p><var>P</var><sub>set</sub> = <var>P</var><sub>chamber,target</sub> + (ṁ / CdA)² / (2ρ)</p>
+              <p>
+                Here, ṁ is the line’s mass flow rate, CdA is its effective flow area, and ρ is the
+                propellant density. The result is the upstream pressure setting for that line.
+              </p>
+            </details>
           </div>
         </article>
 
@@ -818,59 +868,11 @@
               under twice the expected engine load. The model included AR500 steel and 316 stainless
               steel, with an assumed bolt-tightening torque of 12 ft·lbf.
             </p>
-            <p>The contour shows predicted total deformation for that load case.</p>
+            <p>The model predicted a maximum displacement of 0.044 in (1.13 mm) at the edge of the central opening in the top plate.</p>
           </div>
         </article>
 
-        <!-- Hot-fire data analysis -->
-        <article class="project">
-          <div class="project-gallery">
-            <figure class="visual">
-              <button type="button" class="image-button" aria-label="Enlarge measured thrust and chamber pressure plot">
-                <img src="assets/hot-fire-thrust-pressure.png" alt="Measured thrust and chamber pressure versus elapsed time during a hot-fire test" loading="lazy">
-              </button>
-              <figcaption><span>View image</span></figcaption>
-            </figure>
-            <figure class="visual">
-              <button class="image-button" aria-label="Enlarge hot-fire data plots">
-                <img src="assets/analysis.webp" alt="Python plots of measured hot-fire pressure data" loading="lazy">
-              </button>
-              <figcaption><span>View image</span></figcaption>
-            </figure>
-          </div>
-          <div class="project-copy">
-            <div class="eyebrow">Aug 2025–present · Python</div>
-            <h3>Hot-fire data analysis</h3>
-            <p>
-              I wrote a Python script to isolate the active burn using thrust thresholds. I then compared
-              measured thrust and chamber pressure with predictions. With the calculated propellant-line
-              settings, chamber pressure came close to the target, and thrust was slightly lower than predicted.
-            </p>
-            <p>
-              The plots show measured hot-fire data. The tank-pressure trends were consistent with one
-              tank having more gas space above the liquid as the propellants drained.
-            </p>
-            <details class="method">
-              <summary>How the set-pressure calculator works</summary>
-              <p>
-                For each propellant line, I subtract the Venturi throat pressure from its inlet pressure to
-                get ΔP. I convert that difference from psi to pascals and then calculate the mass flow rate:
-              </p>
-              <p>ṁ = (C<sub>d</sub>A)<sub>Venturi</sub> √(2ρ ΔP)</p>
-              <p>The Venturi’s effective flow area, (C<sub>d</sub>A)<sub>Venturi</sub>, comes from calibration in earlier tests. With area in m² and the density of the fluid flowing through the Venturi in kg/m³ (water for a water run), the result is the mass flow rate in kg/s.</p>
-              <p>
-                The calculator then uses that flow and the effective flow area of the propellant line to
-                estimate the pressure loss upstream of the chamber. Adding that loss to the target chamber
-                pressure gives the line’s set pressure:
-              </p>
-              <p><var>P</var><sub>set</sub> = <var>P</var><sub>chamber,target</sub> + (ṁ / CdA)² / (2ρ)</p>
-              <p>
-                Here, ṁ is the line’s mass flow rate, CdA is its effective flow area, and ρ is the
-                propellant density. The result is the upstream pressure setting for that line.
-              </p>
-            </details>
-          </div>
-        </article>
+
       </section>
 
       <!-- About -->
